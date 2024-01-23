@@ -29,4 +29,4 @@ async def quote(ctx):
     await ctx.send(f'"{random_quote}" - Sun Tzu')
 
 # Replace 'YOUR_BOT_TOKEN' with your actual bot token
-bot.run('YOUR_BOT_TOKEN')
+bot.run(TOKEN=os.environ.get('TOKEN'))
