@@ -10,7 +10,7 @@ from discord.ext import commands
 TOKEN = (os.environ.get('TOKEN'))
 PREFIX = '!artofwar'
 
-with open('art_of_war_quotes.txt', 'r', encoding='utf-8') as file:
+wwith open('art_of_war_quotes.txt', 'r', encoding='utf-8') as file:
     quotes = [line.strip() for line in file.readlines()]
 
 bot = commands.Bot(command_prefix=PREFIX)
@@ -24,5 +24,12 @@ async def get_quote(ctx):
     quote = random.choice(quotes)
     await ctx.send(quote)
 
+@bot.event
+async def on_message(message):
+    if message.author == bot.user:
+        return
+
+    await bot.process_commands(message)
+    
 bot.run(TOKEN)
 
