@@ -6,30 +6,24 @@ keep_alive()
 
 from discord.ext import commands
 
-# Create a bot instance
-bot = commands.Bot(command_prefix='!')
+# Replace 'YOUR_TOKEN' with your actual bot token
+TOKEN = TOKEN(TOKEN=os.environ.get('TOKEN')
+PREFIX = '!artofwar'
 
-# Function to read quotes from a text file
-def read_quotes(file_path):
-    with open(file_path, 'r', encoding='utf-8') as file:
-        quotes = [line.strip() for line in file.readlines() if line.strip()]
-    return quotes
+# Load quotes from the text file
+with open('art_of_war_quotes.txt', 'r', encoding='utf-8') as file:
+    quotes = [line.strip() for line in file.readlines()]
 
-# Path to the text file with quotes
-quotes_file_path = 'art_of_war_quotes.txt'
-
-# Read quotes from the text file
-quotes = read_quotes(quotes_file_path)
+bot = commands.Bot(command_prefix=PREFIX)
 
 @bot.event
 async def on_ready():
-    print(f'Logged in as {bot.user.name}')
+    print(f'{bot.user.name} has connected to Discord!')
 
-@bot.command(name='quote')
-async def quote(ctx):
-    # Get a random quote from the list
-    random_quote = random.choice(quotes)
-    await ctx.send(f'"{random_quote}" - Sun Tzu')
+@bot.command(name='quote', help='Get a random quote from "The Art of War"')
+async def get_quote(ctx):
+    quote = random.choice(quotes)
+    await ctx.send(quote)
 
-# Replace 'YOUR_BOT_TOKEN' with your actual bot token
-bot.run(TOKEN=os.environ.get('TOKEN'))
+bot.run(TOKEN)
+
