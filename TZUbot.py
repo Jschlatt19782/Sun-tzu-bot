@@ -1,5 +1,8 @@
 import discord
 import random
+import os
+from keep_alive import keep_alive
+keep_alive()
 
 from discord.ext import commands
 
