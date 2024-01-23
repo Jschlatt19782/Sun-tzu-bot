@@ -7,7 +7,7 @@ keep_alive()
 from discord.ext import commands
 
 # Replace 'YOUR_TOKEN' with your actual bot token
-TOKEN =os.environ.get('TOKEN')
+TOKEN = (os.environ.get('TOKEN'))
 PREFIX = '!artofwar'
 
 # Load quotes from the text file
