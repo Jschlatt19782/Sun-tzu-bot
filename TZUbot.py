@@ -19,16 +19,6 @@ bot = commands.Bot(command_prefix=PREFIX)
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
-@bot.event
-async def on_message(message):
-    if message.author == bot.user:
-        return
-
-    if message.content.startswith(PREFIX):
-        await message.channel.send("To get a quote, use `!artofwar quote`.")
-    
-    await bot.process_commands(message)
-
 @bot.command(name='quote', help='Get a random quote from "The Art of War"')
 async def get_quote(ctx):
     quote = random.choice(quotes)
