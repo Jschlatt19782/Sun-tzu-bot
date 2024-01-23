@@ -10,7 +10,7 @@ from discord.ext import commands
 TOKEN = (os.environ.get('TOKEN'))
 PREFIX = '!artofwar'
 
-wwith open('art_of_war_quotes.txt', 'r', encoding='utf-8') as file:
+with open('art_of_war_quotes.txt', 'r', encoding='utf-8') as file:
     quotes = [line.strip() for line in file.readlines()]
 
 bot = commands.Bot(command_prefix=PREFIX)
